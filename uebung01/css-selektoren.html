@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DIV-Spielerei</title>
+
+    <style>
+        body {
+            font-family: Sans-serif;
+        }
+        div {
+            background-color: lightyellow;
+            padding: 1em;
+            margin: 1em:
+        }
+
+        .monospace {
+            font-family: monospace;
+        }
+
+        #first-div {
+            background-color: red;
+        }
+
+        /* h1 followed py p */
+        h1 + p {
+            font-size: 150%;
+            font-style: italic;
+        }
+
+        #third-div::first-letter {
+            font-size: 300%;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="first-div" class="monospace">Dieses DIV soll eine rote Hintergrundfarbe bekommen</div>
+
+
+<div id="second-div">
+
+    <h1>Große Überschrift</h1>
+    <p>Text nach einer großen Überschrift</p>
+
+    <h2>Kleine Überschrift</h2>
+
+    <p>Text nach einer kleinen Überschrift</p>
+
+    <h2>Kleine Überschrift</h2>
+
+    <p>Text nach einer kleinen Überschrift</p>
+
+    <h1>Große Überschrift</h1>
+    <p>Text nach einer großen Überschrift</p>
+
+    <h2>Kleine Überschrift</h2>
+
+    <p>Text nach einer kleinen Überschrift</p>
+
+    <h2>Kleine Überschrift</h2>
+
+    <p>Text nach einer kleinen Überschrift</p>
+
+</div>
+
+
+<div id="third-div" class="monospace">In diesem DIV soll der erste Buchstabe (also das I) mit Schriftgröße 300%
+    ausgegeben
+    werden
+</div>
+
+
+</body>
+</html>
