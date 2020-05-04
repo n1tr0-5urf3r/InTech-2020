@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Galerie</title>
+
+    <style>
+        body {
+            background-color: black;
+        }
+
+        #bilder img {
+            filter: grayscale(100%);
+        }
+
+        #bilder img:hover {
+            filter: grayscale(0%);
+        }
+
+        #bilder {
+           column-count: 3;
+        }
+
+        @media only screen and (max-width: 1000px) {
+            #bilder {
+                column-count: 2;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            #bilder {
+                column-count: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="bilder">
+        <img src="img\1.png" alt="1">
+        <img src="img\2.png" alt="2">
+        <img src="img\3.png" alt="3">
+        <img src="img\4.png" alt="4">
+        <img src="img\5.png" alt="5">
+        <img src="img\6.png" alt="6">
+        <img src="img\7.png" alt="7">
+        <img src="img\8.png" alt="8">
+    </div>
+</body>
+</html>
