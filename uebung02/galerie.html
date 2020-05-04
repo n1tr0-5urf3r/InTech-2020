@@ -2,6 +2,7 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport“ content=“width=device-width, initial-scale=1.0">.
     <title>Galerie</title>
 
     <style>
@@ -11,6 +12,7 @@
 
         .bilder img {
             filter: grayscale(100%);
+            width: 100%;
         }
 
         .bilder img:hover {
@@ -21,13 +23,13 @@
            column-count: 3;
         }
 
-        @media only screen and (max-width: 1000px) {
+        @media screen and (max-width: 1000px) {
             .bilder {
                 column-count: 2;
             }
         }
 
-        @media only screen and (max-width: 500px) {
+        @media screen and (max-width: 500px) {
             .bilder {
                 column-count: 1;
             }
