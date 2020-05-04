@@ -9,33 +9,33 @@
             background-color: black;
         }
 
-        #bilder img {
+        .bilder img {
             filter: grayscale(100%);
         }
 
-        #bilder img:hover {
+        .bilder img:hover {
             filter: grayscale(0%);
         }
 
-        #bilder {
+        .bilder {
            column-count: 3;
         }
 
         @media only screen and (max-width: 1000px) {
-            #bilder {
+            .bilder {
                 column-count: 2;
             }
         }
 
         @media only screen and (max-width: 500px) {
-            #bilder {
+            .bilder {
                 column-count: 1;
             }
         }
     </style>
 </head>
 <body>
-    <div id="bilder">
+    <div class="bilder">
         <img src="img\1.png" alt="1">
         <img src="img\2.png" alt="2">
         <img src="img\3.png" alt="3">
