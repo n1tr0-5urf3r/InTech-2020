@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <title>Straße</title>
+
+    <style>
+        body, html {
+            overflow: hidden;
+            background-image: url("img/background.svg");
+            background-repeat: repeat-x;
+            background-position: center center;
+            background-size: contain;
+            background-attachment: fixed;
+        }
+
+        @keyframes moveRight {
+            from {left: -40%;}
+            to {left: 100%;}
+        }
+
+        @keyframes moveLeft {
+            from {right: -40%;}
+            to {right: 100%;}
+        }
+
+        .cars img {
+            position: absolute;
+            height: 35%;
+            width: 35%;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+
+        .cars .firstLane img{
+            left: -40%;
+            bottom: -3%;
+            z-index: 2;
+            animation-name: moveRight;
+        }
+
+        .cars .secondLane img{
+            right: -40%;
+            bottom: 10%;
+            z-index: 1;
+            transform: scaleX(-1);
+            animation-name: moveLeft;
+        }
+
+        #car2 {
+            animation-delay: 3s;
+        }
+
+        #car4 {
+            animation-delay: 2s;
+           }
+    </style>
+
+</head>
+<body>
+<div class="cars">
+    <div class="firstLane">
+        <img id="car1" src="img/car1.svg">
+        <img id="car2" src="img/car2.svg">
+    </div>
+    <div class="secondLane">
+        <img id="car3" src="img/car3.svg">
+        <img id="car4" src="img/car4.svg">
+    </div>
+</div>
+
+</body>
+</html>
