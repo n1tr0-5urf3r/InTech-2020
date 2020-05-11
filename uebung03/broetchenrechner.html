@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Broetchenrechner</title>
+</head>
+<body>
+
+    <h1>Brötchenrechner</h1>
+    <form>
+        <label for="broetchenCount">Anzahl der Brötchen</label><br>
+        <input type="number" id="broetchenCount" name="broetchenCount"><br>
+        <input type="submit" id="broetchenSub" name="broetchenSub">
+    </form>
+
+    <script>
+    function listener() {
+            var count = document.getElementById("broetchenCount").value;
+            var price = 0;
+            if (count <= 10) {
+                price = count * 55;
+            } else {
+                price = count * 55 * 0.9;
+            }
+            console.log(count)
+            if (price >= 100){
+                price = price/100;
+                alert("Die Brötchen kosten " + price + "€");
+            } else {
+                alert("Die Brötchen kosten " + price + "cent");
+            }
+    }
+    document.getElementById("broetchenSub").addEventListener("click", listener);
+</script>
+</body>
+</html>
