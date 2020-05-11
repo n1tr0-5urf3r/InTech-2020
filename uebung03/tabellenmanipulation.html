@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Tabellenmanipulation</title>
+
+    <style>
+        table {
+          border-collapse: collapse;
+        }
+
+        table, td, th {
+          border: 1px solid black;
+        }
+
+    </style>
+</head>
+<body>
+<h1>DOM-Tabellenmanipulation</h1>
+
+<input type="button" id="addCol" value="Spalte hinzufügen"/>
+<input type="button" id="remCol" value="Spalte entfernen"/>
+<input type="button" id="addRow" value="Zeile hinzufügen"/>
+<input type="button" id="remRow" value="Zeile entfernen"/>
+<h3 id="dimensions">Dimension: 0 x 0</h3>
+<table id="tbl">
+</table>
+
+<script>
+
+        function addCol() {
+            for(var i = 0; i < table.rows.length; i++) {
+                table.rows[i].insertCell(colCount);
+            }
+            colCount = colCount + 1;
+            updateDimensions()
+        }
+
+        function remCol() {
+            if (colCount > 0) {
+                for(var i = 0; i < table.rows.length; i++) {
+                    table.rows[i].deleteCell(-1);
+                }
+                colCount = colCount - 1;
+                updateDimensions()
+            }
+        }
+
+        function addRow() {
+            var row = table.insertRow(table.rows.length);
+
+            for(var i = 0; i < colCount; i++) {
+                row.insertCell(i);
+            }
+            updateDimensions()
+        }
+
+        function remRow() {
+            if (table.rows.length > 0) {
+                table.deleteRow(table.rows.length - 1);
+                updateDimensions()
+            }
+        }
+
+        function updateDimensions(){
+            document.getElementById("dimensions").innerHTML = "Dimension: "+table.rows.length + " x " + colCount;
+        }
+
+        var colCount = 0;
+        var table = document.getElementById("tbl");
+
+        document.getElementById("addCol").addEventListener("click", addCol);
+        document.getElementById("remCol").addEventListener("click", remCol);
+        document.getElementById("addRow").addEventListener("click", addRow);
+        document.getElementById("remRow").addEventListener("click", remRow);
+
+</script>
+</body>
+</html>
