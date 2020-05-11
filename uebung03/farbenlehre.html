@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Farbenlehre</title>
+</head>
+<body>
+<h1>Farbenlehre</h1>
+<p>Bitte gib für den Rotanteil, Grünanteil und Blauanteil einen Wert zwischen 0 und 255 an.</p>
+<form>
+    <table>
+        <tr>
+            <td><label for="rot">Rotanteil</label></td>
+            <td><input type="number" id="rot" name="rot"></td>
+        </tr>
+        <tr>
+            <td><label for="gruen">Grünanteil</label></td>
+            <td><input type="number" id="gruen" name="gruen"></td>
+        </tr>
+        <tr>
+            <td><label for="blau">Blauanteil</label></td>
+            <td><input type="number" id="blau" name="blau"></td>
+        </tr>
+    </table>
+</form>
+<input type="button" id="sub" value="Gib's mir!"/>
+<table id="colorTable">
+    <tr>
+        <td>Rotanteil</td>
+        <td>Grünanteil</td>
+        <td>Blauanteil</td>
+        <td>RGB-Farbe</td>
+    </tr>
+</table>
+<script>
+
+    function setHexColor(){
+        var rH = parseInt(document.getElementById("rot").value);
+        var gH = parseInt(document.getElementById("gruen").value);
+        var bH = parseInt(document.getElementById("blau").value);
+
+        if (!isNaN(rH) && !isNaN(gH) && !isNaN(bH)) {
+
+            if (rH < 16){
+                rH = "0" + rH.toString(16).toUpperCase();
+            } else {
+                rH = rH.toString(16).toUpperCase();
+            }
+            if (gH < 16){
+                gH = "0" + gH.toString(16).toUpperCase();
+            } else {
+                gH = gH.toString(16).toUpperCase();
+            }
+            if (bH < 16){
+                bH = "0" + bH.toString(16).toUpperCase();
+            } else {
+                bH = bH.toString(16).toUpperCase();
+            }
+
+            var hexVal = "#" + rH + gH + bH;
+
+            var table = document.getElementById("colorTable");
+
+            var row = table.insertRow(table.rows.length);
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
+            var cell4 = row.insertCell(3);
+
+            cell1.innerHTML = "<p>"+rH+"</p>";
+            cell2.innerHTML = "<p>"+gH+"</p>";
+            cell3.innerHTML = "<p>"+bH+"</p>";
+            cell4.innerHTML = "<p style=\"background-color: "+hexVal+"\">"+hexVal+"</p>";
+         } else {
+            alert("Bitte alle Farbwerte ausfüllen!")
+         }
+    }
+
+    function listener(){
+        setHexColor();
+    }
+    document.getElementById("sub").addEventListener("click", listener);
+
+
+</script>
+
+</body>
+</html>
