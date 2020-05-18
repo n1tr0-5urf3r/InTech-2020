@@ -1,93 +1,157 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Drei gewinnt</title>
 
-
     <style>
+      body {
+        font-family: sans-serif;
+        text-align: center;
+      }
 
-        body {
-            font-family: sans-serif;
-            text-align: center;
-        }
+      table {
+        margin: auto;
+        border-collapse: collapse;
+      }
 
-        table {
-            margin: auto;
-            border-collapse: collapse;
-        }
+      td {
+        width: 75px;
+        height: 75px;
+        border: 1px solid black;
+        font-size: 50px;
+      }
 
-        td {
-            width: 75px;
-            height: 75px;
-            border: 1px solid black;
-            font-size: 50px;
-        }
+      td:first-child {
+        border-left: 0;
+      }
 
+      td:last-child {
+        border-right: 0;
+      }
 
-        td:first-child {
-            border-left: 0;
-        }
+      tr:first-child td {
+        border-top: 0;
+      }
 
-        td:last-child {
-            border-right: 0;
-        }
+      tr:last-child td {
+        border-bottom: 0;
+      }
 
-        tr:first-child td {
-            border-top: 0;
-        }
+      td:hover {
+        background-color: #eeeeee;
+        cursor: pointer;
+      }
 
-        tr:last-child td {
-            border-bottom: 0;
-        }
-
-        td:hover {
-            background-color: #eeeeee;
-            cursor: pointer;
-        }
-
-
-        #info {
-            margin-top: 1em;
-        }
-
+      #info {
+        margin-top: 1em;
+      }
     </style>
+  </head>
+  <body>
+    <h1>Drei gewinnt</h1>
 
-</head>
-<body>
-
-<h1>Drei gewinnt</h1>
-
-<table id="board">
-
-    <tr>
+    <table id="board">
+      <tr>
         <td></td>
         <td></td>
         <td></td>
-    </tr>
+      </tr>
 
-    <tr>
+      <tr>
         <td></td>
         <td></td>
         <td></td>
-    </tr>
+      </tr>
 
-    <tr>
+      <tr>
         <td></td>
         <td></td>
         <td></td>
-    </tr>
+      </tr>
+    </table>
 
-</table>
+    <div id="info">ist am Zug</div>
 
-<div id="info">x ist am Zug</div>
+    <script>
+      var running = true;
+      var players = ["x", "o"];
+      var counter = 0;
+      var board = document.getElementById("board");
+      document.getElementById("info").innerHTML = "x ist am Zug";
 
+      function checkWon() {
+        function checkString(s) {
+          // Checks if the string has won
+          if (s == "xxx") {
+            document.getElementById("info").innerHTML = "x hat gewonnen!";
+            running = false;
+          } else if (s == "ooo") {
+            document.getElementById("info").innerHTML = "o hat gewonnen!";
+            running = false;
+          }
+        }
 
-<script>
+        function checkCells() {
+          for (var i = 0; i < board.rows.length; i++) {
+            var row = board.rows[i];
+            // Generate row and col strings and check them
+            var rowString =
+              row.cells[0].innerHTML +
+              row.cells[1].innerHTML +
+              row.cells[2].innerHTML;
+            var colString =
+              board.rows[0].cells[i].innerHTML +
+              board.rows[1].cells[i].innerHTML +
+              board.rows[2].cells[i].innerHTML;
+            checkString(rowString);
+            checkString(colString);
+          }
+          // Check diagonal cells
+          var d1 =
+            board.rows[0].cells[0].innerHTML +
+            board.rows[1].cells[1].innerHTML +
+            board.rows[2].cells[2].innerHTML;
+          var d2 =
+            board.rows[0].cells[2].innerHTML +
+            board.rows[1].cells[1].innerHTML +
+            board.rows[2].cells[0].innerHTML;
+          checkString(d1);
+          checkString(d2);
+        }
 
-   // Ergänzen Sie hier Ihren javaScript-Code
+        function checkDraw() {
+          if (counter == 8) {
+            // Terminate with draw
+            document.getElementById("info").innerHTML = "Unentschieden!";
+            running = false;
+          }
+        }
 
-</script>
+        checkDraw();
+        checkCells();
+      }
 
-</body>
+      board.addEventListener("click", function (event) {
+        var element = event.target;
+
+        if (running) {
+          // Set the player, "x" or "o"
+          var player = players[counter % 2];
+          var playerTurn = players[(counter + 1) % 2];
+          document.getElementById("info").innerHTML =
+            playerTurn + " ist am Zug";
+
+          // Check for available slot
+          if (element.innerHTML == "") {
+            element.innerHTML = player;
+            checkWon();
+            counter++;
+          } else {
+            console.log("Da steht schon was");
+          }
+        }
+      });
+    </script>
+  </body>
 </html>
