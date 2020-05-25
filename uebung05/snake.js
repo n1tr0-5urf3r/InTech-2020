@@ -158,8 +158,8 @@ var intervalID = setInterval(function () {
 
     // Game over, stop intervalID
     if (snakeHeadCollidesWithSnake(snake)) {
-        drawGameOver(snake.length - 3);
         drawRect(snake[0].x * 20, snake[0].y * 20, "#D3D3D3", "#FF0000")
+        drawGameOver(snake.length - 3);
         clearInterval(intervalID);
     }
 }, 150);
