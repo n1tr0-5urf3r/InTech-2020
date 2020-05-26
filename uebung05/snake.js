@@ -123,6 +123,7 @@ if (canvas.getContext) {
 function setDiff(){
     document.getElementById("start").removeEventListener("click", setDiff);
     document.getElementById("start").style.display = "none";
+    document.getElementById("options").setAttribute("disabled", true);
     speed = parseInt(document.getElementById("options").value);
     console.log(speed);
 
@@ -184,6 +185,7 @@ function setDiff(){
             // Make restart possible, restore to initial values
             document.getElementById("start").style.display = "initial";
             document.getElementById("start").addEventListener("click", setDiff);
+            document.getElementById("options").removeAttribute("disabled", true);
             snake = [{ x: 3, y: 2 }, { x: 4, y: 2 }, { x: 5, y: 2 }];
             fruit = { x: 5, y: 5 };
             currentDirection = toLeft;
