@@ -37,7 +37,8 @@ function drawSnake(snake) {
         if (i == 0) {
             drawRect(x, y, "#D3D3D3", "#000000");
         } else {
-            drawRect(x, y, "#D3D3D3", "#00538E");
+            //drawRect(x, y, "#D3D3D3", "#00538E");
+            drawRect(x, y, "#D3D3D3", "rgb(0,"+Math.round(i*155/(snake.length -1)) + ",142)");
         }
     }
 }
