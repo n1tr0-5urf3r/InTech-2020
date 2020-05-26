@@ -10,7 +10,6 @@ var fruit = { x: 5, y: 5 };
 var currentDirection = toLeft;
 var canvas = document.getElementById('drawing');
 var speed = 150;
-var started = false;
 
 function drawRect(x, y, lineColor, fillColor) {
     if (canvas.getContext) {
@@ -121,9 +120,9 @@ if (canvas.getContext) {
 }
 
 function setDiff(){
+    document.getElementById("start").removeEventListener("click", setDiff);
     speed = parseInt(document.getElementById("options").value);
     console.log(speed);
-    started = true;
 
     // Game- and Animationloop
     var intervalID = setInterval(function () {
