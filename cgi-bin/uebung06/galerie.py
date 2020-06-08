@@ -12,21 +12,28 @@ def randomMod3():
         
 def printHTML():
     amountImgs = randomMod3()
-    print("<!DOCTYPE html>")
-    print('<html lang="de">')
-    print('<head>')
-    print('<meta charset="UTF-8">')
-    print('<title>CGI Galerie</title>')
-    print('<style>')
-    print('body {background-color: black;}')
-    print('.bilder {column-count: 3;}')
-    print('</style>')
+    # Ausgabe
+    print("Content-type: text/html\n")
 
-    print('<body>')
-    print('<div class="bilder">')
+    print("""
+    <!DOCTYPE html>
+    <html lang="de">
+    <head>
+        <meta charset="utf-8">
+        <title>CGI Galerie</title>
+    </head>
+    
+    <style>
+    body {background-color: black;}
+    .bilder {column-count: 3;}
+    </style>
+    <body>
+    <div class="bilder">
+    """)
     for i in range(amountImgs):
         print('<img src="https://picsum.photos/800/600/?random=' + str(i) +'">')
     print('</div>')
     print('</body>')
+
 
 printHTML()
