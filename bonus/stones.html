@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stones</title>
+</head>
+<body>
+    <div id="difficulties" >
+        <select id="options" name="options">
+            <option value="150">Easy</option>
+            <option value="100" selected>Medium</option>
+            <option value="50">Hard</option>
+            <option value="20">Extreme</option>
+          </select> 
+          <input type="submit" id="start" name="start" value="Start Game!">
+    </div>
+
+    <canvas id="drawing" width="400" height="400"></canvas>
+    <div><p id="gameOver"></p></div>
+    <script src="stones.js"></script>
+</body>
+</html>
