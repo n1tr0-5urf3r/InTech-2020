@@ -26,8 +26,11 @@ def printHTML():
     <style>
     body {background-color: black;}
     .bilder {column-count: 3;}
+    h1 {color: white;text-align: center;}
     </style>
-    <body>
+    <body>""")
+    print('<h1>Zufallsgalerie mit ' + str(amountImgs) + ' Bildern</h1>')
+    print("""
     <div class="bilder">
     """)
     for i in range(amountImgs):
