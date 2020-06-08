@@ -26,10 +26,8 @@ function drawRect(x, y, lineColor, fillColor) {
         var ctx = canvas.getContext('2d');
         ctx.beginPath();
         ctx.fillStyle = fillColor
-        ctx.lineWidth = "2";
         ctx.strokeStyle = lineColor;
         ctx.rect(x, y, 10, 10);
-        ctx.stroke();
         ctx.fill();
     }
 }
