@@ -30,7 +30,7 @@ def printHTML():
 
         print('<h1>Fibonacci</h1>')
         print('Die {}-te Fibonacci Zahl lautet {}'.format(n, fibN))
-        
+
     except:
         print("<h1>Fehler</h1><p>Bei der Abarbeitung ist ein Fehler aufgetreten. Wurde ein Parameter n uebergeben?</p>")
 
@@ -38,3 +38,5 @@ def printHTML():
     </body>
     </html>
     """)
+
+printHTML()
