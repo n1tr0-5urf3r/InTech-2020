@@ -1,6 +1,10 @@
 #!/usr/bin/python3
 
 import random
+# Traceback handler for python
+import cgi
+import cgitb
+cgitb.enable()
 
 def randomMod3():
     found = False

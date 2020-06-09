@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
 import cgi
+# Traceback handler for python
+import cgitb
+cgitb.enable()
 
 def fib(n):
     if n == 1 or n == 2:
