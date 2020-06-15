@@ -23,7 +23,6 @@ def buildForms():
             <input type="text" id="tags" name="tags">
             <input type="submit" value="Save">
         </form>
-         <textarea name="comment" form="usrform">Enter text here...</textarea> 
         </body>
         </html>
     """)
