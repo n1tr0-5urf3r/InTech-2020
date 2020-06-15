@@ -22,16 +22,16 @@ def printHead(title):
 def printFooter():
     print("""
     <a href="posts-create.py>New Post</a>
-    <a href="">Show tags</a>
+    <a href="tags-show.py">Show tags</a>
     </body></html>""")
 
-def printPosts(posts):
+def printPosts(posts, tagFilter=None):
     print("<body>")
-    if len(posts) == 0:
-        print("Noch keine Posts vorhanden ...")
-    else: 
+
+    if tagFilter: 
         for p in posts:
-            print("""
+            if tagFilter in p["tags"]:
+                print("""
                 <h1>{}</h1>
                 <h4>{}</h4>
                 <p>{}</p>
@@ -39,7 +39,22 @@ def printPosts(posts):
             for t in p["tags"]:
                 safeTag = urllib.parse.quote(t, safe='')
                 print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
-    printFooter()
+            printFooter()
+    else: 
+        # Ugly copy paste....
+        if len(posts) == 0:
+            print("Noch keine Posts vorhanden ...")
+        else: 
+            for p in posts:
+                print("""
+                    <h1>{}</h1>
+                    <h4>{}</h4>
+                    <p>{}</p>
+                """.format(p["title"], p["published"], p["content"]))
+                for t in p["tags"]:
+                    safeTag = urllib.parse.quote(t, safe='')
+                    print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
+        printFooter()
 
 # Liefert die aktuelle Uhrzeit im Format Jahr-Monat-Tag-Stunde-Minute-Sekunde
 def get_timestamp():
