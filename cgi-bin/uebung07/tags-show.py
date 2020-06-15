@@ -7,16 +7,17 @@ from posts_lib import printHead, printErrorPage, readAllPosts, printTags, printP
 
 all_posts = readAllPosts()
 
-try:
-        # FieldStorage-Instanz erzeugen
-        form = cgi.FieldStorage(encoding='utf8')
+# FieldStorage-Instanz erzeugen
+form = cgi.FieldStorage(encoding='utf8')
 
-        # Parameter access
-        tag = form.getvalue('tag')
+# Parameter access
+tag = form.getvalue('tag')
 
-        printHead("#" + tag)
-        printPosts(all_posts, tagFilter=tag)
-
-# Error-Handling ...
-except: 
+if tag is None:
+    printHead("Tags")
+    print("<h2>Tags</h2>")
     printTags(all_posts)
+else:
+    printHead("#" + tag)
+    print("<h2>#{}</h2>".format(tag))
+    printPosts(all_posts, tagFilter=tag)
