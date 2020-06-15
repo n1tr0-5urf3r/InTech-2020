@@ -19,5 +19,4 @@ try:
 
 # Error-Handling ...
 except: 
-
     printTags(all_posts)

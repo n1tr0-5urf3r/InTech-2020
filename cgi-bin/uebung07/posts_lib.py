@@ -26,35 +26,30 @@ def printFooter():
     </body></html>""")
 
 def printPosts(posts, tagFilter=None):
+    def printHTML():
+        print("""
+            <h1>{}</h1>
+            <h4>{}</h4>
+            <p>{}</p>
+            """.format(p["title"], p["published"], p["content"]))
+        for t in p["tags"]:
+            safeTag = urllib.parse.quote(t, safe='')
+            print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
+        printFooter()
+
     print("<body>")
 
     if tagFilter: 
         for p in posts:
             if tagFilter in p["tags"]:
-                print("""
-                <h1>{}</h1>
-                <h4>{}</h4>
-                <p>{}</p>
-            """.format(p["title"], p["published"], p["content"]))
-            for t in p["tags"]:
-                safeTag = urllib.parse.quote(t, safe='')
-                print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
-            printFooter()
+                printHTML()
     else: 
-        # Ugly copy paste....
         if len(posts) == 0:
             print("Noch keine Posts vorhanden ...")
         else: 
             for p in posts:
-                print("""
-                    <h1>{}</h1>
-                    <h4>{}</h4>
-                    <p>{}</p>
-                """.format(p["title"], p["published"], p["content"]))
-                for t in p["tags"]:
-                    safeTag = urllib.parse.quote(t, safe='')
-                    print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
-        printFooter()
+                printHTML()
+
 
 # Liefert die aktuelle Uhrzeit im Format Jahr-Monat-Tag-Stunde-Minute-Sekunde
 def get_timestamp():
@@ -83,7 +78,7 @@ def readAllPosts():
     posts = [readPost(f) for f in file_names]
 
     # Sort posts by title 
-    sorted_posts = sorted(posts, key=lambda t: t["published"], reverse=False)
+    sorted_posts = sorted(posts, key=lambda t: t["published"], reverse=True)
 
     return sorted_posts
 
