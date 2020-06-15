@@ -5,6 +5,7 @@ import json
 import time
 from os import listdir
 from os.path import isfile, join
+import urllib.parse
 
 cgitb.enable()
 
@@ -29,7 +30,9 @@ def printPosts(posts):
                 <h4>{}</h4>
                 <p>{}</p>
             """.format(p["title"], p["published"], p["content"]))
-            #TODO tags
+            for t in posts["tags"]:
+                safeTag = urllib.parse.quote(t, safe='')
+                print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
     print("</body></html>")
 
 # Liefert die aktuelle Uhrzeit im Format Jahr-Monat-Tag-Stunde-Minute-Sekunde
@@ -92,4 +95,3 @@ def printErrorPage(title, message, exception):
     # Exception ausgeben
     print(repr(exception))
     print("</body></html>")
-
