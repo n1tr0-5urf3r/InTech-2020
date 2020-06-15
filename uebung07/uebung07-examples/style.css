@@ -1,0 +1,52 @@
+body, html {
+    font-family: sans-serif;
+    background-color: #444;
+    color: white;
+    text-align: center;
+}
+
+a {
+    color: white;
+}
+
+input, textarea, table {
+    max-width: 100%;
+    width: 100%;
+    padding: 1em;
+    margin: 1em auto;
+    background-color: #fff;
+    border-radius: 1em;
+    border: 1px solid darkblue;
+    color: black;
+    text-align: justify;
+    box-sizing: border-box;
+}
+
+form {
+    max-width: 30em;
+    width: 100%;
+    margin: 0 auto;
+}
+
+table {
+     max-width: 30em;
+
+}
+
+.open {
+    /*...*/
+}
+
+.done {
+    text-decoration: line-through;
+}
+
+
+td {
+    width: auto;
+}
+
+td.min {
+    width: 1%;
+
+}
