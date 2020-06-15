@@ -100,7 +100,7 @@ def create_post(title, content, tags):
 
 
 def printTags(posts):
-    tags = {}
+    tags = set()
     for p in posts:
         for t in p["tags"]:
             tags.add(t)
