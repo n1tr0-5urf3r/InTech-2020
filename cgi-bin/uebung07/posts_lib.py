@@ -31,7 +31,9 @@ def printPosts(posts, tagFilter=None):
         print("""
             <div class="post">
             <h2>{}</h2>
+            <hr>
             <h4>{}</h4>
+            <hr>
             <p>{}</p>
             """.format(p["title"], p["published"], p["content"]))
         for t in p["tags"]:
