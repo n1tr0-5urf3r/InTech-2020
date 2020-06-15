@@ -140,10 +140,10 @@ function setDiff(){
         // Listener for user input
         document.body.addEventListener('keydown', function (event) {
             if (event.key == "ArrowUp" && currentDirection != toBottom && !keyPressed) {
-                currentDirection = toTop;
+                currentDirection = toUp;
                 keyPressed = true;
             }
-            if (event.key == "ArrowDown" && currentDirection != toTop && !keyPressed) {
+            if (event.key == "ArrowDown" && currentDirection != toUp && !keyPressed) {
                 currentDirection = toBottom;
                 keyPressed = true;
             }
