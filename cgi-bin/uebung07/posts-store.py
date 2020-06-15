@@ -26,4 +26,4 @@ try:
 
 # Error-Handling ...
 except Exception as e:
-    printErrorPage("Fehler", "Fehler beim Hinzufügen!", e)
+    printErrorPage("Fehler", "Fehler beim Hinzufuegen!", e)
