@@ -106,6 +106,7 @@ def printTags(posts):
         for t in p["tags"]:
             tags.add(t)
     print("<body><li>")
+    tags = sorted(tags)
     for t in tags:
         safeTag = urllib.parse.quote(t, safe='')
         print("<ul><a href=tags-show.py?tag={}>{}</a></ul>".format(safeTag, "#"+safeTag))
