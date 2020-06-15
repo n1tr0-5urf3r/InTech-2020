@@ -28,7 +28,6 @@ def printFooter():
 
 def printPosts(posts, tagFilter=None):
     def printHTML():
-        readableTime = getReadableTimestamp(p["published"])
         print("""
             <div class="post">
             <h2>{}</h2>
@@ -36,7 +35,7 @@ def printPosts(posts, tagFilter=None):
             <h4>{}</h4>
             <hr>
             <p>{}</p>
-            """.format(p["title"], readableTime, p["content"]))
+            """.format(p["title"], p["published"], p["content"]))
         for t in p["tags"]:
             safeTag = urllib.parse.quote(t, safe='')
             print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
@@ -56,11 +55,11 @@ def printPosts(posts, tagFilter=None):
                 printHTML()
     printFooter()
 
-def getTimestamp(ts):
-    return time.strftime("%Y-%m-%d %H:%M:%S", ts)
 
-def getReadableTimestamp(ts):
-    return time.strftime("%d.%m.%Y, %H:%M", ts)
+
+# Liefert die aktuelle Uhrzeit im Format Jahr-Monat-Tag-Stunde-Minute-Sekunde
+def get_timestamp():
+    return time.strftime("%Y-%m-%d-%H-%M-%S")
 
 # Writes post as json ecnoded file
 def writePost(filename, post):
@@ -91,7 +90,7 @@ def readAllPosts():
 
 
 def create_post(title, content, tags):
-    timestamp = time.gmtime()
+    timestamp = get_timestamp()
     # First entry is an empty string, so remove it and split tags with list comprehension
     tagsSplit = [x.replace("#", "") for x in tags.split("#")][1:]
 
