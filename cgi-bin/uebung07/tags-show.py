@@ -5,16 +5,18 @@ import cgi
 import cgitb
 from posts_lib import printHead, printErrorPage, readAllPosts, printTags
 
+all_posts = readAllPosts()
+
 try:
         # FieldStorage-Instanz erzeugen
         form = cgi.FieldStorage(encoding='utf8')
 
         # Parameter access
         tag = int(form.getvalue('tag'))
-        all_posts = readAllPosts()
 
         printHead("#" + tag)
 
 # Error-Handling ...
 except: 
+
     printTags(all_posts)
