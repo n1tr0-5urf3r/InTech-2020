@@ -7,8 +7,6 @@ from posts_lib import printHead
 
 cgitb.enable()
 
-
-
 def buildForms():
         printHead("New Post")
 
