@@ -28,7 +28,7 @@ def printPosts(posts):
                 <h1>{}</h1>
                 <h4>{}</h4>
                 <p>{}</p>
-            """.format(p["title"], p["timestamp"], p["content"]))
+            """.format(p["title"], p["published"], p["content"]))
             #TODO tags
     print("</body></html>")
 
