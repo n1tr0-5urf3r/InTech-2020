@@ -13,15 +13,8 @@ try:
         tag = int(form.getvalue('tag'))
         all_posts = readAllPosts()
 
-        if tag is None:
-            # display all tags
-            pass
-        else:
-            printHead("#" + tag)
-            printTags(all_posts)
-
+        printHead("#" + tag)
 
 # Error-Handling ...
-except Exception as e:
-    printErrorPage("Fehler", "Fehler beim Hinzufügen!", e)
-
+except: 
+    printTags(all_posts)
