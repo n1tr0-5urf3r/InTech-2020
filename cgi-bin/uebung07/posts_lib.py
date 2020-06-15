@@ -39,12 +39,13 @@ def read_post(filename):
 
 def create_post(title, content, tags):
     timestamp = get_timestamp()
+    # First entry is an empty string, so remove it and split tags with list comprehension
+    tagsSplit = [x.replace("#", "") for x in tags.split("#")][1:]
 
     post = {
         "title": title,
         "published": timestamp,
-        # TODO fix tags
-        "tags": tags,
+        "tags": tagsSplit,
         "content": content
     }
     # Write json file
@@ -64,3 +65,4 @@ def printErrorPage(title, message, exception):
     # Exception ausgeben
     print(repr(exception))
     print("</body></html>")
+
