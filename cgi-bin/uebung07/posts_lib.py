@@ -19,6 +19,12 @@ def printHead(title):
         <meta charset="utf-8">
         <title>{}</title></head>""".format(title))
 
+def printFooter():
+    print("""
+    <a href="posts-create.py>New Post</a>
+    <a href="">Show tags</a>
+    </body></html>""")
+
 def printPosts(posts):
     print("<body>")
     if len(posts) == 0:
@@ -33,7 +39,7 @@ def printPosts(posts):
             for t in posts["tags"]:
                 safeTag = urllib.parse.quote(t, safe='')
                 print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
-    print("</body></html>")
+    printFooter()
 
 # Liefert die aktuelle Uhrzeit im Format Jahr-Monat-Tag-Stunde-Minute-Sekunde
 def get_timestamp():
@@ -52,6 +58,7 @@ def readPost(filename):
         # Decodiere die JSON-Datei in ein Dictionary
         return json.load(json_file)
 
+
 # Reads all saved posts
 def readAllPosts():
     # Returns all files in our POSTS_PATH
@@ -61,8 +68,7 @@ def readAllPosts():
     posts = [readPost(f) for f in file_names]
 
     # Sort posts by title 
-    #TODO sort by timestamp
-    sorted_posts = sorted(posts, key=lambda t: t["title"], reverse=False)
+    sorted_posts = sorted(posts, key=lambda t: t["published"], reverse=False)
 
     return sorted_posts
 
@@ -82,6 +88,17 @@ def create_post(title, content, tags):
     writePost(timestamp, post)
     return post
 
+
+def printTags(posts):
+    tags = {}
+    for p in posts:
+        for t in p["tags"]:
+            tags.add(t)
+    print("<body>")
+    for t in tags:
+        safeTag = urllib.parse.quote(t, safe='')
+        print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
+    printFooter()
 
 # Creates HTTP-Redirect
 def redirect(location):

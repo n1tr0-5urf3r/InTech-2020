@@ -18,13 +18,11 @@ try:
     assert content is not None
     assert tags is not None
 
-
     # Task erstellen und speichern
     create_post(title, content, tags)
 
     # Weiterleitung auf Übersichtsseite
     redirect("posts-show.py")
-
 
 # Error-Handling ...
 except Exception as e:
