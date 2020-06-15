@@ -35,7 +35,6 @@ def printPosts(posts, tagFilter=None):
         for t in p["tags"]:
             safeTag = urllib.parse.quote(t, safe='')
             print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
-        printFooter()
 
     print("<body>")
 
@@ -49,6 +48,8 @@ def printPosts(posts, tagFilter=None):
         else: 
             for p in posts:
                 printHTML()
+    printFooter()
+
 
 
 # Liefert die aktuelle Uhrzeit im Format Jahr-Monat-Tag-Stunde-Minute-Sekunde
