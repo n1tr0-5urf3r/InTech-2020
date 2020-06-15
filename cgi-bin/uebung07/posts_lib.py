@@ -120,7 +120,7 @@ def printTags(posts):
     tags = sorted(tags)
     for t in tags:
         safeTag = urllib.parse.quote(t, safe='')
-        print("<ul><a href=tags-show.py?tag={}>{}</a></ul>".format(safeTag, "#"+safeTag))
+        print("<ul><a href=tags-show.py?tag={}>{}</a></ul>".format(safeTag, "#"+t))
     print("</li></div>")
     printFooter()
 
