@@ -21,7 +21,7 @@ def printHead(title):
 
 def printFooter():
     print("""
-    <a href="posts-create.py>New Post</a>
+    <a href="posts-create.py">New Post</a><br>
     <a href="tags-show.py">Show tags</a>
     </body></html>""")
 
@@ -104,10 +104,11 @@ def printTags(posts):
     for p in posts:
         for t in p["tags"]:
             tags.add(t)
-    print("<body>")
+    print("<body><li>")
     for t in tags:
         safeTag = urllib.parse.quote(t, safe='')
-        print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
+        print("<ul><a href=tags-show.py?tag={}>{}</a></ul>".format(safeTag, "#"+safeTag))
+    print("</li>")
     printFooter()
 
 # Creates HTTP-Redirect
