@@ -35,7 +35,7 @@ def printPosts(posts, tagFilter=None):
             <h4>{}</h4>
             <hr>
             <p>{}</p>
-            """.format(p["title"], p["published"], p["content"]))
+            """.format(p["title"], convertTimestamp(p["published"]), p["content"]))
         for t in p["tags"]:
             safeTag = urllib.parse.quote(t, safe='')
             print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
@@ -60,6 +60,12 @@ def printPosts(posts, tagFilter=None):
 # Liefert die aktuelle Uhrzeit im Format Jahr-Monat-Tag-Stunde-Minute-Sekunde
 def get_timestamp():
     return time.strftime("%Y-%m-%d-%H-%M-%S")
+
+def convertTimestamp(t):
+    # Surely not beautiful but it works
+    ts = t.split("-")
+    newT = "{}.{}.{}, {}:{}".format(ts[2], ts[1], ts[0], ts[3], ts[4])
+    return newT
 
 # Writes post as json ecnoded file
 def writePost(filename, post):
