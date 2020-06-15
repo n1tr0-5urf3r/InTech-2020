@@ -12,7 +12,7 @@ try:
         form = cgi.FieldStorage(encoding='utf8')
 
         # Parameter access
-        tag = int(form.getvalue('tag'))
+        tag = form.getvalue('tag')
 
         printHead("#" + tag)
         printPosts(all_posts, tagFilter=tag)
