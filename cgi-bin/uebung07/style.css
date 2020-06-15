@@ -3,8 +3,12 @@ body {
     text-align: center;
 }
 
-a {
+#post a {
     color: red;
+}
+
+a {
+    color: white;
 }
 
 h1 {

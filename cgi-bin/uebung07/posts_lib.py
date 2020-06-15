@@ -37,7 +37,7 @@ def printPosts(posts, tagFilter=None):
         for t in p["tags"]:
             safeTag = urllib.parse.quote(t, safe='')
             print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
-            print("</div>")
+        print("</div>")
 
     print("<body>")
 
