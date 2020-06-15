@@ -1,20 +1,23 @@
 body {
     background-color: #272727;
     text-align: center;
-}
-
-#post a {
-    color: red;
+    font-family: Arial;
 }
 
 a {
     color: white;
 }
 
+.post a {
+    color: red;
+}
+
 h1 {
     color: white;
 }
 
-#post {
+.post {
     background-color: white;
-}
+    width: 40%;
+    margin: 0 auto;
+    border-radius: 25px;}
