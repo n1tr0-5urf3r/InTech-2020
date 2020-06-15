@@ -38,7 +38,7 @@ def printPosts(posts, tagFilter=None):
             """.format(p["title"], convertTimestamp(p["published"]), p["content"]))
         for t in p["tags"]:
             safeTag = urllib.parse.quote(t, safe='')
-            print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
+            print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+t))
         print("</div>")
 
     print("<body>")
