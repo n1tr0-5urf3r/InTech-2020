@@ -3,28 +3,27 @@
 # Traceback handler for python
 import cgi
 import cgitb
+from posts_lib import printHead
+
 cgitb.enable()
 
-def buildForms():
-    print("Content-type: text/html\n")
 
-    print("""
-        <!DOCTYPE html>
-        <html lang="de">
-        <head>
-        <meta charset="utf-8">
-        <title>New Post</title>
-        </head>
+
+def buildForms():
+        printHead("New Post")
+
+        print("""
         <body>
-        <form action="/posts-store.py" method="POST">
+        <form action="posts-store.py" method="POST">
             <label for="title">Title: </label><br>
             <input type="text" id="title" name="title"><br>
             <label for="content">Content:</label><br>
-            <input type="text" id="content" name="content">
+            <input type="text" id="content" name="content"><br>
             <label for="tags">Tags:</label><br>
             <input type="text" id="tags" name="tags">
             <input type="submit" value="Save">
         </form>
+         <textarea name="comment" form="usrform">Enter text here...</textarea> 
         </body>
         </html>
     """)
