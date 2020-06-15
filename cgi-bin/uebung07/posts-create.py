@@ -16,7 +16,7 @@ def buildForms():
             <label for="title">Title: </label><br>
             <input type="text" id="title" name="title"><br>
             <label for="content">Content:</label><br>
-            <input type="text" id="content" name="content"><br>
+            <textarea cols="40" rows="5" name="content"></textarea><br>
             <label for="tags">Tags:</label><br>
             <input type="text" id="tags" name="tags">
             <input type="submit" value="Save">
