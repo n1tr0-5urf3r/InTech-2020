@@ -4,9 +4,7 @@ import cgitb
 cgitb.enable()
 
 def printHead(title):
-        print("""
-        Content-type: text/html\n
-
+        print("""Content-type: text/html\n
         <!DOCTYPE html>
         <html lang="de">
         <head>
