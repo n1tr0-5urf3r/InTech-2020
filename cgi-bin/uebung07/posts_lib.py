@@ -108,12 +108,12 @@ def printTags(posts):
     for p in posts:
         for t in p["tags"]:
             tags.add(t)
-    print("<body><li>")
+    print('<body><div class="post"><li>')
     tags = sorted(tags)
     for t in tags:
         safeTag = urllib.parse.quote(t, safe='')
         print("<ul><a href=tags-show.py?tag={}>{}</a></ul>".format(safeTag, "#"+safeTag))
-    print("</li>")
+    print("</li></div>")
     printFooter()
 
 # Creates HTTP-Redirect
