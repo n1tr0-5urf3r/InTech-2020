@@ -15,9 +15,9 @@ tag = form.getvalue('tag')
 
 if tag is None:
     printHead("Tags")
-    print("<h2>Tags</h2>")
+    print("<h1>Tags</h1>")
     printTags(all_posts)
 else:
     printHead("#" + tag)
-    print("<h2>#{}</h2>".format(tag))
+    print("<h1>#{}</h1>".format(tag))
     printPosts(all_posts, tagFilter=tag)

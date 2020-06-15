@@ -1,0 +1,16 @@
+body {
+    background-color: #272727;
+    text-align: center;
+}
+
+a {
+    color: red;
+}
+
+h1 {
+    color: white;
+}
+
+#post {
+    background-color: white;
+}

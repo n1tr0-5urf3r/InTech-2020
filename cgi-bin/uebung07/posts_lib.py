@@ -21,20 +21,23 @@ def printHead(title):
 
 def printFooter():
     print("""
-    <a href="posts-create.py">New Post</a><br>
+    <br><a href="posts-create.py">New Post</a><br>
     <a href="tags-show.py">Show tags</a>
+    <link rel="stylesheet" href="style.css">
     </body></html>""")
 
 def printPosts(posts, tagFilter=None):
     def printHTML():
         print("""
-            <h1>{}</h1>
+            <div class="post">
+            <h2>{}</h2>
             <h4>{}</h4>
             <p>{}</p>
             """.format(p["title"], p["published"], p["content"]))
         for t in p["tags"]:
             safeTag = urllib.parse.quote(t, safe='')
             print("<a href=tags-show.py?tag={}>{}</a>".format(safeTag, "#"+safeTag))
+            print("</div>")
 
     print("<body>")
 
