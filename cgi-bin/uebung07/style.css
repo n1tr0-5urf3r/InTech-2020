@@ -25,3 +25,14 @@ h1 {
     width: 40%;
     margin: 0 auto;
     border-radius: 25px;}
+
+input, textarea, label {
+  border-radius: 25px;
+  font-size: 20px;
+  margin: 15px;
+
+}
+
+label {
+  color: white;
+}

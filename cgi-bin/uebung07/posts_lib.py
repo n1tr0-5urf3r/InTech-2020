@@ -17,13 +17,13 @@ def printHead(title):
         <html lang="de">
         <head>
         <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
         <title>{}</title></head>""".format(title))
 
 def printFooter():
     print("""
     <br><a href="posts-create.py">New Post</a><br>
     <a href="tags-show.py">Show tags</a>
-    <link rel="stylesheet" href="style.css">
     </body></html>""")
 
 def printPosts(posts, tagFilter=None):
