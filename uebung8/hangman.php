@@ -32,7 +32,9 @@
         }
         print("<p>Bisherige Fehlversuche {$_SESSION['errorCount']} / 8</p>");
         print("<p>DEBUG: Wort: {$_SESSION['toGuess']}</p>");
-
+        print("<p>");
+        print_r($_SESSION);
+        print("</p>");
         ?>
     </form>
 
