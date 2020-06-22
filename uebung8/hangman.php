@@ -33,7 +33,12 @@
         echo "<p>Bisherige Fehlversuche {$_SESSION['errorCount']} / 8</p>";
         echo "<img src=img/fish-{$_SESSION['errorCount']}.svg></img>";
 
-
+        if ($_SESSION['errorCount'] == 1){
+            echo "<h4>Gewonnen! Neues Spiel?</h4>";
+            echo "<input type='submit' action='hangman-init.php' name='Ja!'>";
+        } elseif ($_SESSION['errorCount'] == 2){
+            echo "<h4>Verloren! Das Wort wäre {$_SESSION['toGuess']} gewesen.</h4>";
+        }
 
         echo "<p>DEBUG: Wort: {$_SESSION['toGuess']}</p>";
         echo "<p>";
