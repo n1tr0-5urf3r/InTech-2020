@@ -22,13 +22,13 @@
             echo "{$char} ";
         }
         echo "</p>";
-        echo "<form action='hangman-guess.php' method='POST'>"
+        echo "<form action='hangman-guess.php' method='POST'>";
         $allLetters = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
         $notUsed = array_diff($allLetters, $_SESSION["guessedLetters"]);
         foreach ($notUsed as $letter){
             echo "<input type='submit' name='letter' value='{$letter}'>";
         }
-        echo "</form>"
+        echo "</form>";
         echo "<p>Bisherige Fehlversuche {$_SESSION['errorCount']} / 8</p>";
 
         if ($_SESSION['state'] == 1){
