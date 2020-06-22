@@ -44,6 +44,7 @@ function initGame(){
 
 function guessLetter($letter){
     $letter = strtoupper($letter);
+    $letter = "A";
     // Letter already guessed
     if (in_array($letter, $_SESSION["guessedLetters"])) {
         return;
