@@ -30,6 +30,8 @@
         foreach ($notUsed as $letter){
             print("<input type='submit' name='letter' value='{$letter}'>");
         }
+        print("<p>Bisherige Fehlversuche {$_SESSION['errorCount']} / 8</p>");
+
         ?>
     </form>
 
