@@ -23,12 +23,12 @@
         }
         print("</p>");
     ?>
-    <form>
+    <form action="/hangman-guess.php" method="POST">
         <?php
         $allLetters = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
         $notUsed = array_diff($allLetters, $_SESSION["guessedLetters"]);
         foreach ($notUsed as $letter){
-            print("<input type='submit' value='{$letter}'>");
+            print("<input type='submit' name='letter' value='{$letter}'>");
         }
         ?>
     </form>
