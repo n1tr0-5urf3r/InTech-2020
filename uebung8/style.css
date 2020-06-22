@@ -1,6 +1,8 @@
 body {
     text-align: center;
     font-family: Arial;
+  background-color: #262626;
+  color: white;
   }
   
   input {
@@ -14,4 +16,6 @@ body {
   img {
     width: 50%;
     border-radius: 500px;
+        border: black 1px solid;
+      background-color: white;
   }

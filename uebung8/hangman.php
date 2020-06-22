@@ -40,11 +40,6 @@
             echo "<form action='hangman-init.php'><input type='submit' value='Ja!'> </form>";
         }
         echo "<img src=img/fish-{$_SESSION['errorCount']}.svg></img>";
-
-        echo "<p>DEBUG: Wort: {$_SESSION['toGuess']}</p>";
-        echo "<p>";
-        print_r($_SESSION);
-        echo "</p>";
         ?>
 
 </body>
