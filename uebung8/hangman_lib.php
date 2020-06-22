@@ -49,7 +49,7 @@ function guessLetter($letter){
         return;
     } else {
         // Add to guessed letters
-        $_SESSION["guessedLetters"] = array_push($_SESSION["guessedLetters"], $letter);
+        $_SESSION["guessedLetters"][] = $letter;
         // Convert word to array and check for match
         $guessArr = str_split($_SESSION["toGuess"]);
         if (in_array($letter, $guessArr)){
