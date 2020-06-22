@@ -37,7 +37,7 @@ function initGame(){
     $maskedWord = maskWord($word);
     $_SESSION = array("toGuess" => $transformedWord,
                         "mask" => $maskedWord,
-                        "guessedLetters" => [],
+                        "guessedLetters" => array(),
                         "errorCount" => 0,
                         "state" => 0);
 }
