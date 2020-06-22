@@ -1,0 +1,23 @@
+body {
+    font-family: sans-serif;
+    text-align: center;
+    background-color: #eeeeee;
+}
+
+.inline-form {
+    display: inline;
+}
+
+.inline-form button {
+    border: 0;
+    background-color: #c6c8ca;
+    border-radius: 1em;
+    font-size: x-small;
+    padding: 0.3em;
+}
+
+.inline-form button:hover {
+    background-color: red;
+    color: white;
+}
+
