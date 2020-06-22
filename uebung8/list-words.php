@@ -22,14 +22,13 @@ require_once('hangman_lib.php');
             foreach ($allWords as $word){
                 $guess = transformWord($word);
                 $mask = implode(" ", maskWord($word));
-                print("<tr>");
-                    print("<td>{$word}</td>");
-                    print("<td>{$guess}</td>");
-                    print("<td>{$mask}</td>");
-                print("</tr>");
+                echo "<tr>";
+                    echo "<td>{$word}</td>";
+                    echo "<td>{$guess}</td>";
+                    echo "<td>{$mask}</td>";
+                echo "</tr>";
             }
             unset($word);
-
             ?>
 
     </table>

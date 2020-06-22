@@ -17,24 +17,28 @@
 
     <?php
         // Display mask
-        print("<p>");
+        echo "<p>";
         foreach ($_SESSION["mask"] as $char){
-            print("{$char} ");
+            echo "{$char} ";
         }
-        print("</p>");
+        echo "</p>";
     ?>
     <form action="hangman-guess.php" method="POST">
         <?php
         $allLetters = array("A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z");
         $notUsed = array_diff($allLetters, $_SESSION["guessedLetters"]);
         foreach ($notUsed as $letter){
-            print("<input type='submit' name='letter' value='{$letter}'>");
+            echo "<input type='submit' name='letter' value='{$letter}'>";
         }
-        print("<p>Bisherige Fehlversuche {$_SESSION['errorCount']} / 8</p>");
-        print("<p>DEBUG: Wort: {$_SESSION['toGuess']}</p>");
-        print("<p>");
+        echo "<p>Bisherige Fehlversuche {$_SESSION['errorCount']} / 8</p>";
+        echo "<img src=img/fish-{$_SESSION['errorCount']}.svg></img>";
+
+
+
+        echo "<p>DEBUG: Wort: {$_SESSION['toGuess']}</p>";
+        echo "<p>";
         print_r($_SESSION);
-        print("</p>");
+        echo "</p>";
         ?>
     </form>
 
