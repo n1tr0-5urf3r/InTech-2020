@@ -31,6 +31,7 @@
             print("<input type='submit' name='letter' value='{$letter}'>");
         }
         print("<p>Bisherige Fehlversuche {$_SESSION['errorCount']} / 8</p>");
+        print("<p>DEBUG: Wort: {$_SESSION['toGuess']}</p>");
 
         ?>
     </form>
