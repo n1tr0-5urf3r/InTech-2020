@@ -66,8 +66,9 @@ function guessLetter($letter){
         // Check game state
         if ($_SESSION["errorCount"] > 8) {
             $_SESSION["state"] = 2;
-        } elseif (!in_array("_", $guessArr)) {
+        } elseif (!in_array("_", $_SESSION["mask"])) {
             // Won! gz wp
+            print_r($guessArr);
             $_SESSION["state"] = 1;
         } else {
             $_SESSION["state"] = 0;
