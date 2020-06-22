@@ -33,13 +33,12 @@
 
         if ($_SESSION['state'] == 1){
             echo "<h4>Gewonnen! Neues Spiel?</h4>";
-            echo "<input type='submit' formaction='hangman-init.php' name='Ja!'>";
+            echo "<form action='hangman-init.php'><input type='submit' value='Ja!'> </form>";
         } elseif ($_SESSION['state'] == 2){
             echo "<h4>Verloren! Das Wort wäre {$_SESSION['toGuess']} gewesen. Neues Spiel?</h4>";
-            echo "<input type='submit' formaction='hangman-init.php' name='Ja!'>";
+            echo "<form action='hangman-init.php'><input type='submit' value='Ja!'> </form>";
         }
         echo "<img src=img/fish-{$_SESSION['errorCount']}.svg></img>";
-
 
         echo "<p>DEBUG: Wort: {$_SESSION['toGuess']}</p>";
         echo "<p>";
