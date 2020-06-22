@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start("zxmij86u8");
     if (!isset($_SESSION['toGuess'])) {
         header("Location: hangman-init.php");
     }
