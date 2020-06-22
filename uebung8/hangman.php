@@ -31,14 +31,16 @@
             echo "<input type='submit' name='letter' value='{$letter}'>";
         }
         echo "<p>Bisherige Fehlversuche {$_SESSION['errorCount']} / 8</p>";
-        echo "<img src=img/fish-{$_SESSION['errorCount']}.svg></img>";
 
         if ($_SESSION['state'] == 1){
             echo "<h4>Gewonnen! Neues Spiel?</h4>";
             echo "<input type='submit' action='hangman-init.php' name='Ja!'>";
         } elseif ($_SESSION['state'] == 2){
-            echo "<h4>Verloren! Das Wort wäre {$_SESSION['toGuess']} gewesen.</h4>";
+            echo "<h4>Verloren! Das Wort wäre {$_SESSION['toGuess']} gewesen. Neues Spiel?</h4>";
+            echo "<input type='submit' action='hangman-init.php' name='Ja!'>";
         }
+        echo "<img src=img/fish-{$_SESSION['errorCount']}.svg></img>";
+
 
         echo "<p>DEBUG: Wort: {$_SESSION['toGuess']}</p>";
         echo "<p>";
