@@ -12,11 +12,11 @@ require_once('hangman_lib.php');
 <body>
     <h1>Alle Wörter</h1>
     <table>
-        <th>
-            <td>Wort</td>
-            <td>Zu raten</td>
-            <td>Maske</td>
-        </th>
+      <tr>
+            <th>Wort</th>
+            <th>Zu raten</th>
+            <th>Maske</th>
+        </tr>
             <?php
             $allWords = getAllWords();
             foreach ($allWords as $word){
