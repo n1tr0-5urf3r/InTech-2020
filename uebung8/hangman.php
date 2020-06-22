@@ -1,7 +1,7 @@
 <?php
     session_start();
     if (!isset($_SESSION['toGuess'])) {
-        header("Location: 'hangman-init.php'");
+        header("Location: hangman-init.php");
     }
 ?>
 

@@ -7,6 +7,6 @@ if( isset($_POST['letter']) )
 {
     guessLetter($letter);
 }
-header("Location: 'hangman.php'");
+header("Location: hangman.php");
 
 ?>

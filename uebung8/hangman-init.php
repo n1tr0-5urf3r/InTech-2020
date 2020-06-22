@@ -5,5 +5,5 @@ require_once('hangman_lib.php');
 session_start();
 initGame();
 // Redirect to game
-header("Location: 'hangman.php'");
+header("Location: hangman.php");
 ?>
