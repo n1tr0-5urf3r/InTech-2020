@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
 <body>
 
     <form action="questions-update.php" method="post">
-        <input type="hidden" id="questionId" name="questionId" value=<?php echo '$id' ?>>
+        <input type="hidden" id="questionId" name="questionId" value=<?php echo $id ?>>
         <h3>Frage:</h3>
         <textarea cols="40" rows="5" name="question" required><?php echo $question ?></textarea><br>
         <h3>Antwort 0</h3>
