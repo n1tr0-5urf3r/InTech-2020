@@ -62,7 +62,14 @@
 						break;
 				}
 
-				echo "<tr><td id=>$frage</td><td class=$s0>$answer0</td><td class=$s1>$answer1</td><td class=$s2>$answer2</td><td><form action='questions-edit.php' method='get'><input type='submit' value='Bearbeiten'></form></td><td><form action='questions-delete.php' method='post'><input type='submit' value='Löschen'></form></td></tr>";
+				echo "<tr><td id=>$frage</td><td class=$s0>$answer0</td><td class=$s1>$answer1</td><td class=$s2>$answer2</td><td>
+				<form action='questions-edit.php' method='get'>
+					<input type='hidden' value=$id>
+					<input type='submit' value='Bearbeiten'></form>
+				</td><td>
+				<form action='questions-delete.php' method='post'>
+				<input type='hidden' value=$id>
+				<input type='submit' value='Löschen'></form></td></tr>";
 			}
 		} else {
 			echo "Keine Fragen vorhanden.";

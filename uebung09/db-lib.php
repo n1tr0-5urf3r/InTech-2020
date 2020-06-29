@@ -38,10 +38,23 @@ class Database
 		return $resultArray;
 	}
 
+	function getQuestion($id){
+		$statement = $this->connection->prepare("SELECT * FROM questions WHERE id=?");
+		$statement->bind_param("i", $id);
+		return $statement->execute();
+	}
+
 	function insertQuestion($question, $answer0, $answer1, $answer2, $solution)
 	{
 		$statement = $this->connection->prepare("INSERT INTO questions(question, answer0, answer1, answer2, solution) VALUES (?, ?, ?, ?, ?)");
 		$statement->bind_param("ssssi", $question, $answer0, $answer1, $answer2, $solution);
+		return $statement->execute();
+	}
+
+	function updateQuestion($id, $question, $answer0, $answer1, $answer2, $solution)
+	{
+		$statement = $this->connection->prepare("UPDATE questions SET question=?, answer0=?, answer1=?, answer2=?, solution=? WHERE id=?");
+		$statement->bind_param("ssssii", $question, $answer0, $answer1, $answer2, $solution, $id);
 		return $statement->execute();
 	}
 }
