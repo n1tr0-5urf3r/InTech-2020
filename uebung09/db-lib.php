@@ -40,7 +40,8 @@ class Database
 
 	function insertQuestion($question, $answer0, $answer1, $answer2, $solution)
 	{
-		$statement = $this->connection->prepare("INSERT INTO questions(question, answer0, answer1, answer2, solution) VALUES(:question, :answer0, :answer1, :answer2, :solution)");
-		return $statement->execute(array('question' => $question, 'answer0' => $answer0, 'answer1' => $answer1, 'answer2' => $answer2, 'solution' => $solution));
+		$statement = $this->connection->prepare("INSERT INTO questions(question, answer0, answer1, answer2, solution) VALUES(?, ?, ?, ?, ?");
+		$statement->bind_param("ssssi", $question, $answer0, $answer1, $answer2, $solution);
+		return $statement->execute();
 	}
 }
