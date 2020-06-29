@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $id = $_GET['id'];
 
     $db = new Database();
-    $questions =  $db->getQuestion($id);
+    $$q =  $db->getQuestion($id);
 
         $frage = $q['question'];
         $id = $q['id'];
