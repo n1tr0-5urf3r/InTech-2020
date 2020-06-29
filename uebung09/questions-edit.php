@@ -5,9 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $id = $_GET['id'];
 
     $db = new Database();
-    $result =  $db->getQuestion($id);
-
-    foreach ($questions as $q) {
+    $questions =  $db->getQuestion($id);
 
         $frage = $q['question'];
         $id = $q['id'];
@@ -15,7 +13,6 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         $answer1 = $q['answer1'];
         $answer2 = $q['answer2'];
         $solution = $q['solution'];
-    }
 }
 ?>
 

@@ -41,7 +41,18 @@ class Database
 	function getQuestion($id){
 		$statement = $this->connection->prepare("SELECT * FROM questions WHERE id=?");
 		$statement->bind_param("i", $id);
-		return $statement->execute();
+		$statement->execute();
+		$statement->bind_result($id, $question, $answer0, $answer1, $answer2, $solution);
+
+		while ($statement->fetch()){
+			$result = array("question" => $question,
+							"answer0" => $answer0,
+							"answer1" => $answer1,
+							"answer2" => $answer2,
+							"solution" => $solution,
+		);
+		}
+		return $result;
 	}
 
 	function insertQuestion($question, $answer0, $answer1, $answer2, $solution)
