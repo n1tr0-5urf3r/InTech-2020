@@ -68,4 +68,10 @@ class Database
 		$statement->bind_param("ssssii", $question, $answer0, $answer1, $answer2, $solution, $id);
 		return $statement->execute();
 	}
+
+	function deleteQuestion($id){
+		$statement = $this->connection->prepare("DELETE FROM questions WHERE id=?");
+		$statement->bind_result("i", $id);
+		return $statement->execute();
+	}
 }
