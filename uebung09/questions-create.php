@@ -10,7 +10,7 @@
 
 <body>
 
-    <form action="questions-store.php" action="post">
+    <form action="questions-store.php" method="post">
         <h3>Frage:</h3>
         <textarea cols="40" rows="5" name="question" required></textarea><br>
         <h3>Antwort 0</h3>
