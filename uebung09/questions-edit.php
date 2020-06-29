@@ -7,7 +7,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     $db = new Database();
     $$q =  $db->getQuestion($id);
 
-        $frage = $q['question'];
+        $question = $q['question'];
         $id = $q['id'];
         $answer0 = $q['answer0'];
         $answer1 = $q['answer1'];
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
         <input type=text name="answer0" value=<?php echo '$answer0' ?> required></br>
         <h3>Antwort 1</h3>
         <input type=radio name="solution" value="1" required>
-        <input type=text name="answer1" value=<?php echo '$answer1' ?>required></br>
+        <input type=text name="answer1" value=<?php echo '$answer1' ?> required></br>
         <h3>Antwort 2</h3>
         <input type=radio name="solution" value="2" required>
         <input type=text name="answer2" value=<?php echo '$answer2' ?> required></br>
