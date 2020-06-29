@@ -29,16 +29,16 @@ if ($_SERVER["REQUEST_METHOD"] == "GET") {
     <form action="questions-update.php" method="post">
         <input type="hidden" id="questionId" name="questionId" value=<?php echo '$id' ?>>
         <h3>Frage:</h3>
-        <textarea cols="40" rows="5" name="question" value=<?php echo $question ?> required></textarea><br>
+        <textarea cols="40" rows="5" name="question" required><?php echo $question ?></textarea><br>
         <h3>Antwort 0</h3>
         <input type=radio name="solution" value="0" required>
-        <input type=text name="answer0" value=<?php echo $answer0 ?> required></br>
+        <input type=text name="answer0" value="<?php echo $answer0 ?>" required></br>
         <h3>Antwort 1</h3>
         <input type=radio name="solution" value="1" required>
-        <input type=text name="answer1" value=<?php echo $answer1 ?> required></br>
+        <input type=text name="answer1" value="<?php echo $answer1 ?>" required></br>
         <h3>Antwort 2</h3>
         <input type=radio name="solution" value="2" required>
-        <input type=text name="answer2" value=<?php echo $answer2 ?> required></br>
+        <input type=text name="answer2" value="<?php echo $answer2 ?>" required></br>
 
         <input type=submit name="store" value="Frage aktualisieren">
 
