@@ -64,16 +64,19 @@
       }
 
       function updateQuestions() {
-        document.getElementById("answer0").disabled = false;
-        document.getElementById("answer1").disabled = false;
-        document.getElementById("answer2").disabled = false;
 
         var container = document.getElementById("init");
         container.innerHTML = "";
         container.innerHTML = createQuizCard(questions[questionCount]);
+
+        // Reenable buttons for next question
+        document.getElementById("answer0").disabled = false;
+        document.getElementById("answer1").disabled = false;
+        document.getElementById("answer2").disabled = false;
+
         questionCount++;
 
-        checkWon();
+        //checkWon();
       }
 
       function sleep(ms) {
