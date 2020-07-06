@@ -70,6 +70,10 @@
         questionCount++;
       }
 
+      function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+   }
+
       function checkSolution(answer) {
         solution = questions[questionCount]["solution"];
         var rightAnswer = "answer" + solution
@@ -81,6 +85,9 @@
             document.getElementById(yourAnswer).style.color = "white";
         } 
         console.log(answer);
+
+        sleep(2000);
+        updateQuestions();
       }
     </script>
   </body>
