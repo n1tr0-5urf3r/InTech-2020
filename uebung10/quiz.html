@@ -18,6 +18,7 @@
     <script>
       // Used as indice for questions
       var questionCount = 0;
+      var rightAnswers = 0;
 
       function startQuiz() {
         // Get initial questions once
@@ -63,28 +64,41 @@
       }
 
       function updateQuestions() {
+        document.getElementById("answer0").disabled = false;
+        document.getElementById("answer1").disabled = false;
+        document.getElementById("answer2").disabled = false;
+
         var container = document.getElementById("init");
         container.innerHTML = "";
         container.innerHTML = createQuizCard(questions[questionCount]);
         questionCount++;
+
+        checkWon();
       }
 
       function sleep(ms) {
-      return new Promise(resolve => setTimeout(resolve, ms));
-   }
+        return new Promise((resolve) => setTimeout(resolve, ms));
+      }
 
       async function checkSolution(answer) {
         solution = questions[questionCount]["solution"];
-        var rightAnswer = "answer" + solution
+        var rightAnswer = "answer" + solution;
         document.getElementById(rightAnswer).style.backgroundColor = "green";
         document.getElementById(rightAnswer).style.color = "white";
-        if (solution != answer) {
-            var yourAnswer = "answer" + answer
-            document.getElementById(yourAnswer).style.backgroundColor = "red";
-            document.getElementById(yourAnswer).style.color = "white";
-        } 
-        console.log(answer);
 
+        document.getElementById("answer0").disabled = true;
+        document.getElementById("answer1").disabled = true;
+        document.getElementById("answer2").disabled = true;
+
+        if (solution != answer) {
+          var yourAnswer = "answer" + answer;
+          document.getElementById(yourAnswer).style.backgroundColor = "red";
+          document.getElementById(yourAnswer).style.color = "white";
+        } else {
+            rightAnswers++;
+        }
+
+        // Asynchronous sleep call
         await sleep(2000);
         updateQuestions();
       }
