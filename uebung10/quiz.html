@@ -72,8 +72,6 @@
         document.getElementById("answer0").disabled = false;
         document.getElementById("answer1").disabled = false;
         document.getElementById("answer2").disabled = false;
-
-        questionCount++;
       }
 
       function checkWon() {
@@ -109,6 +107,7 @@
         await sleep(2000);
         checkWon();
         updateQuestions();
+        questionCount++;
       }
     </script>
   </body>
