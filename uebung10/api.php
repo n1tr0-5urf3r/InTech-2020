@@ -19,17 +19,19 @@
     $statement->bind_result($id, $question, $answer0, $answer1, $answer2, $solution);
     while ($statement->fetch()){
         $result[] = array("question" => $question,
+                        array(
                         "answer0" => $answer0,
                         "answer1" => $answer1,
-                        "answer2" => $answer2,
+                        "answer2" => $answer2),
                         "solution" => $solution,
     );
     }
     return $result;
 }
 
-if(!$_GET["n"]) $n = 10; else $n=$_GET["n"];
+// Check for parameter and set it according
+if(!$_GET["n"] || !$_GET) $n = 10; else $n=$_GET["n"];
 $questions = getNRandomQuestions($n);
-//header('Content-Type: application/json');
-print_r($questions)
+header('Content-Type: application/json');
+echo json_encode($questions);
 ?>
