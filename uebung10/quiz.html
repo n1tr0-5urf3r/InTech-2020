@@ -86,6 +86,7 @@
       }
 
       async function checkSolution(answer) {
+          console.log(questionCount);
         solution = questions[questionCount]["solution"];
         var rightAnswer = "answer" + solution;
         document.getElementById(rightAnswer).style.backgroundColor = "green";
