@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=+, initial-scale=1.0" />
+    <title>Quit</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>Quiz</h1>
+    <h4>Wie viele Fragen möchtest du spielen?</h4>
+
+    <input id="amount" type="number" name="n" value="10" />
+    <button onclick="parseParameter()">Spiel starten</button>
+
+    <script>
+      function parseParameter() {
+        const n = document.getElementById("amount").value;
+
+        var url = "api.php?n=" + n;
+        fetchQuestions(url);
+      }
+
+      function fetchQuestions(url) {
+        // Erzeuge ein neues XMLHttpRequest-Objekt
+        var xmlhttp = new XMLHttpRequest();
+
+        // Lege fest, was passieren soll, wenn sich der readystate des XMLHttpRequest-Objekts ändert
+        xmlhttp.onreadystatechange = function () {
+          // Wenn der Request beendet ist (readyState = 4) und alles OK war (status 200)
+          if (this.readyState === 4 && this.status === 200) {
+            // Wandle das Ergebnis des Requests von JSON in ein JavaScript-Objekt um
+            var questions = JSON.parse(this.responseText);
+            console.log(questions)
+            // updateWeather(questions);
+          }
+          // Andernfalls: Wenn der Request beendet ist und nicht alles OK war
+          else if (this.readyState === 4 && this.status !== 200) {
+            // geben wir eine Fehlermeldung als alert aus
+            alert(
+              "Fragen konnten nicht abgerufen werden. Statuscode" + this.status
+            );
+          }
+        };
+
+        xmlhttp.open("GET", url, true);
+        xmlhttp.send();
+      }
+    </script>
+  </body>
+</html>
