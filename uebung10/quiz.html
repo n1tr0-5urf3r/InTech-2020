@@ -15,7 +15,6 @@
       <button id="start">Spiel starten</button>
     </div>
 
-
     <script>
       // Used as indice for questions
       var questionCount = 0;
@@ -52,7 +51,16 @@
       }
 
       function createQuizCard(questionData) {
-          console.log(questionData[0]["answer0"]);
+        document
+          .getElementById("answer0")
+          .addEventListener("click", checkSolution(0));
+        document
+          .getElementById("answer1")
+          .addEventListener("click", checkSolution(1));
+        document
+          .getElementById("answer2")
+          .addEventListener("click", checkSolution(2));
+          
         return `<div class="card">
 <h2>${questionData["question"]}</h2>
 <button id="answer0">${questionData[0]["answer0"]}</button><br>
@@ -72,24 +80,16 @@
         questionCount++;
       }
 
-      function checkSolution(answer){
-          solution = questionData["solution"];
-          if (solution == answer){
-              console.log("Richtig");
-          }
-          console.log(answer);
+      function checkSolution(answer) {
+        solution = questionData["solution"];
+        if (solution == answer) {
+          console.log("Richtig");
+        }
+        console.log(answer);
       }
-
 
       // Get initial questions once
       document.getElementById("start").addEventListener("click", startQuiz());
-
-      
-      document.getElementById("answer0").addEventListener("click", checkSolution(0));
-      document.getElementById("answer1").addEventListener("click", checkSolution(1));
-      document.getElementById("answer2").addEventListener("click", checkSolution(2));
-
-
     </script>
   </body>
 </html>
