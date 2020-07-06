@@ -76,8 +76,10 @@
 
       function checkWon() {
         if (questionCount == questions.length) {
-          container.innerHTML = "";
-          cotainer.innerHTML = "<h4>Du hast " + rightAnswers + " von " + n + " Fragen richtig beantwortet.</h4>"
+            console.log("finished")
+          return true;
+        } else {
+          return false;
         }
       }
 
@@ -86,7 +88,7 @@
       }
 
       async function checkSolution(answer) {
-          console.log(questionCount);
+        console.log(questionCount);
         solution = questions[questionCount]["solution"];
         var rightAnswer = "answer" + solution;
         document.getElementById(rightAnswer).style.backgroundColor = "green";
@@ -106,9 +108,18 @@
 
         // Asynchronous sleep call
         await sleep(2000);
-        checkWon();
-        questionCount++;
-        updateQuestions();
+        if (checkWon()) {
+          container.innerHTML = "";
+          cotainer.innerHTML =
+            "<h4>Du hast " +
+            rightAnswers +
+            " von " +
+            n +
+            " Fragen richtig beantwortet.</h4>";
+        } else {
+          questionCount++;
+          updateQuestions();
+        }
       }
     </script>
   </body>
