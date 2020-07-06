@@ -22,6 +22,8 @@
       function parseParameter() {
         const n = document.getElementById("amount").value;
         const url = "api.php?n=" + n;
+
+        fetchQuestions(url);
       }
 
       function fetchQuestions(url) {
@@ -54,9 +56,9 @@
           console.log(questionData[0]["answer0"]);
         return `<div class="card">
 <h2>${questionData["question"]}</h2>
-<button id="answer0" onclick="checkSolution(0)">${questionData[0]["answer0"]}</button><br>
-<button id="answer1" onclick="checkSolution(1)">${questionData[0]["answer1"]}</button><br>
-<button id="answer2" onclick="checkSolution(2)">${questionData[0]["answer2"]}</button><br>
+<button id="answer0" onclick="checkSolution(0, questionData)">${questionData[0]["answer0"]}</button><br>
+<button id="answer1" onclick="checkSolution(1, questionData)">${questionData[0]["answer1"]}</button><br>
+<button id="answer2" onclick="checkSolution(2, questionData)">${questionData[0]["answer2"]}</button><br>
 </div>
 `;
       }
@@ -71,16 +73,13 @@
         questionCount++;
       }
 
-      function checkSolution(answer){
-          solution = questions[questionCount]["solution"];
+      function checkSolution(answer, questionData){
+          solution = questionData["solution"];
           if (solution == answer){
               console.log("Richtig");
           }
           console.log(answer);
       }
-
-
-      fetchQuestions(url);
 
     </script>
   </body>
