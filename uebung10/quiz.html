@@ -72,9 +72,14 @@
 
       function checkSolution(answer) {
         solution = questions[questionCount]["solution"];
-        if (solution == answer) {
-          console.log("Richtig");
-        }
+        var rightAnswer = "answer" + solution
+        document.getElementById(rightAnswer).style.backgroundColor = "green";
+        document.getElementById(rightAnswer).style.color = "white";
+        if (solution != answer) {
+            var yourAnswer = "answer" + answer
+            document.getElementById(yourAnswer).style.backgroundColor = "red";
+            document.getElementById(yourAnswer).style.color = "white";
+        } 
         console.log(answer);
       }
     </script>
