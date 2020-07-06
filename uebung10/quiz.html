@@ -12,15 +12,15 @@
       <h4>Wie viele Fragen möchtest du spielen?</h4>
 
       <input id="amount" type="number" name="n" value="10" />
-      <button id="start">Spiel starten</button>
+      <button id="start" onclick="startQuiz()">Spiel starten</button>
     </div>
-
 
     <script>
       // Used as indice for questions
       var questionCount = 0;
 
       function startQuiz() {
+        // Get initial questions once
         const n = document.getElementById("amount").value;
         const url = "api.php?n=" + n;
         fetchQuestions(url);
@@ -35,9 +35,9 @@
           // Wenn der Request beendet ist (readyState = 4) und alles OK war (status 200)
           if (this.readyState === 4 && this.status === 200) {
             // Wandle das Ergebnis des Requests von JSON in ein JavaScript-Objekt um
-            const questions = JSON.parse(this.responseText);
+            questions = JSON.parse(this.responseText);
             //console.log(questions);
-            updateQuestions(questions, questionCount);
+            updateQuestions();
           }
           // Andernfalls: Wenn der Request beendet ist und nicht alles OK war
           else if (this.readyState === 4 && this.status !== 200) {
@@ -53,7 +53,7 @@
       }
 
       function createQuizCard(questionData) {
-          console.log(questionData[0]["answer0"]);
+        console.log(questionData[0]["answer0"]);
         return `<div class="card">
 <h2>${questionData["question"]}</h2>
 <button id="answer0" onclick="checkSolution(0)">${questionData[0]["answer0"]}</button><br>
@@ -63,27 +63,20 @@
 `;
       }
 
-      function updateQuestions(questions, questionCount) {
+      function updateQuestions() {
         var container = document.getElementById("init");
-
         container.innerHTML = "";
-
         container.innerHTML = createQuizCard(questions[questionCount]);
-
         questionCount++;
       }
 
-      function checkSolution(answer){
-          solution = questionData["solution"];
-          if (solution == answer){
-              console.log("Richtig");
-          }
-          console.log(answer);
+      function checkSolution(answer) {
+        solution = question[questionCount]["solution"];
+        if (solution == answer) {
+          console.log("Richtig");
+        }
+        console.log(answer);
       }
-
-
-      // Get initial questions once
-      document.getElementById("start").addEventListener("click", startQuiz());
     </script>
   </body>
 </html>
