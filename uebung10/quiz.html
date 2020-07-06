@@ -85,6 +85,10 @@
         return new Promise((resolve) => setTimeout(resolve, ms));
       }
 
+      function playAudio(url) {
+        new Audio(url).play();
+      }
+
       async function checkSolution(answer) {
         solution = questions[questionCount]["solution"];
         var rightAnswer = "answer" + solution;
@@ -97,6 +101,7 @@
         document.getElementById("answer2").disabled = true;
 
         if (solution != answer) {
+          playAudio("nope.mp3");
           var yourAnswer = "answer" + answer;
           document.getElementById(yourAnswer).style.backgroundColor = "red";
           document.getElementById(yourAnswer).style.color = "white";
