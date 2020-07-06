@@ -91,6 +91,7 @@
         document.getElementById(rightAnswer).style.backgroundColor = "green";
         document.getElementById(rightAnswer).style.color = "white";
 
+        // Disable buttons for this question
         document.getElementById("answer0").disabled = true;
         document.getElementById("answer1").disabled = true;
         document.getElementById("answer2").disabled = true;
@@ -114,6 +115,7 @@
             n +
             " Fragen richtig beantwortet.</h4><br><button onclick='location.href = \"quiz.html\";'>Neues Spiel starten?</button>";
         } else {
+          // Show next question
           questionCount++;
           updateQuestions();
         }
