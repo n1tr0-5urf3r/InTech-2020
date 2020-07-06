@@ -8,12 +8,17 @@
   </head>
   <body>
     <h1>Quiz</h1>
-    <h4>Wie viele Fragen möchtest du spielen?</h4>
+    <div id="init">
+      <h4>Wie viele Fragen möchtest du spielen?</h4>
 
-    <input id="amount" type="number" name="n" value="10" />
-    <button onclick="parseParameter()">Spiel starten</button>
+      <input id="amount" type="number" name="n" value="10" />
+      <button onclick="parseParameter()">Spiel starten</button>
+    </div>
 
     <script>
+      // Used as indice for questions
+      var questionCount = 0;
+
       function parseParameter() {
         const n = document.getElementById("amount").value;
 
@@ -31,8 +36,8 @@
           if (this.readyState === 4 && this.status === 200) {
             // Wandle das Ergebnis des Requests von JSON in ein JavaScript-Objekt um
             var questions = JSON.parse(this.responseText);
-            console.log(questions)
-            // updateWeather(questions);
+            console.log(questions);
+            updateQuestions(questions, questionCount);
           }
           // Andernfalls: Wenn der Request beendet ist und nicht alles OK war
           else if (this.readyState === 4 && this.status !== 200) {
@@ -45,6 +50,14 @@
 
         xmlhttp.open("GET", url, true);
         xmlhttp.send();
+      }
+
+      function updateQuestions(questions, questionCount){
+        var container = document.getElementById("init");
+
+        container.innerHTML = "";
+
+        container.innerHTML = questions[0]["question"];
       }
     </script>
   </body>
