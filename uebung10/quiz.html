@@ -75,11 +75,7 @@
       }
 
       function checkWon() {
-          console.log(typeof(questionCount));
-          console.log(typeof(questions.length));
-          console.log(questionCount);
-          console.log(questions.length);
-        if (questionCount == questions.length) {
+        if (questionCount == questions.length - 1) {
             console.log("finished")
           return true;
         } else {
