@@ -38,7 +38,6 @@
           if (this.readyState === 4 && this.status === 200) {
             // Wandle das Ergebnis des Requests von JSON in ein JavaScript-Objekt um
             questions = JSON.parse(this.responseText);
-            //console.log(questions);
             updateQuestions();
           }
           // Andernfalls: Wenn der Request beendet ist und nicht alles OK war
@@ -76,7 +75,6 @@
 
       function checkWon() {
         if (questionCount == questions.length - 1) {
-            console.log("finished")
           return true;
         } else {
           return false;
@@ -114,7 +112,7 @@
             rightAnswers +
             " von " +
             n +
-            " Fragen richtig beantwortet.</h4>";
+            " Fragen richtig beantwortet.</h4><br><button id='start' onclick='startQuiz()'>Neues Spiel starten?</button>";
         } else {
           questionCount++;
           updateQuestions();
