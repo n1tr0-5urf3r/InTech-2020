@@ -12,18 +12,22 @@
       <h4>Wie viele Fragen möchtest du spielen?</h4>
 
       <input id="amount" type="number" name="n" value="10" />
-      <button onclick="parseParameter()">Spiel starten</button>
+      <button onclick="startQuiz()">Spiel starten</button>
     </div>
 
     <script>
       // Used as indice for questions
       var questionCount = 0;
 
-      function parseParameter() {
+      function startQuiz() {
         const n = document.getElementById("amount").value;
         const url = "api.php?n=" + n;
 
-        fetchQuestions(url);
+        questions = fetchQuestions(url);
+
+        setInterval(function () {
+          updateQuestions(questions, questionCount);
+        }, 100);
       }
 
       function fetchQuestions(url) {
@@ -35,9 +39,9 @@
           // Wenn der Request beendet ist (readyState = 4) und alles OK war (status 200)
           if (this.readyState === 4 && this.status === 200) {
             // Wandle das Ergebnis des Requests von JSON in ein JavaScript-Objekt um
-            var questions = JSON.parse(this.responseText);
+            const questions = JSON.parse(this.responseText);
             //console.log(questions);
-            updateQuestions(questions, questionCount);
+            //updateQuestions(questions, questionCount);
           }
           // Andernfalls: Wenn der Request beendet ist und nicht alles OK war
           else if (this.readyState === 4 && this.status !== 200) {
@@ -53,12 +57,12 @@
       }
 
       function createQuizCard(questionData) {
-          console.log(questionData[0]["answer0"]);
+        console.log(questionData[0]["answer0"]);
         return `<div class="card">
 <h2>${questionData["question"]}</h2>
-<button id="answer0" onclick="checkSolution(0, questionData)">${questionData[0]["answer0"]}</button><br>
-<button id="answer1" onclick="checkSolution(1, questionData)">${questionData[0]["answer1"]}</button><br>
-<button id="answer2" onclick="checkSolution(2, questionData)">${questionData[0]["answer2"]}</button><br>
+<button id="answer0" onclick="checkSolution(0)">${questionData[0]["answer0"]}</button><br>
+<button id="answer1" onclick="checkSolution(1)">${questionData[0]["answer1"]}</button><br>
+<button id="answer2" onclick="checkSolution(2)">${questionData[0]["answer2"]}</button><br>
 </div>
 `;
       }
@@ -73,14 +77,13 @@
         questionCount++;
       }
 
-      function checkSolution(answer, questionData){
-          solution = questionData["solution"];
-          if (solution == answer){
-              console.log("Richtig");
-          }
-          console.log(answer);
+      function checkSolution(answer) {
+        solution = questionData["solution"];
+        if (solution == answer) {
+          console.log("Richtig");
+        }
+        console.log(answer);
       }
-
     </script>
   </body>
 </html>
