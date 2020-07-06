@@ -21,9 +21,7 @@
 
       function parseParameter() {
         const n = document.getElementById("amount").value;
-
-        var url = "api.php?n=" + n;
-        fetchQuestions(url);
+        const url = "api.php?n=" + n;
       }
 
       function fetchQuestions(url) {
@@ -80,6 +78,10 @@
           }
           console.log(answer);
       }
+
+
+      fetchQuestions(url);
+
     </script>
   </body>
 </html>
