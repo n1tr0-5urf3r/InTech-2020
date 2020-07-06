@@ -36,7 +36,7 @@
           if (this.readyState === 4 && this.status === 200) {
             // Wandle das Ergebnis des Requests von JSON in ein JavaScript-Objekt um
             var questions = JSON.parse(this.responseText);
-            console.log(questions);
+            //console.log(questions);
             updateQuestions(questions, questionCount);
           }
           // Andernfalls: Wenn der Request beendet ist und nicht alles OK war
@@ -74,6 +74,10 @@
       }
 
       function checkSolution(answer){
+          solution = questions[questionCount]["solution"];
+          if (solution == answer){
+              console.log("Richtig");
+          }
           console.log(answer);
       }
     </script>
