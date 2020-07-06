@@ -52,12 +52,24 @@
         xmlhttp.send();
       }
 
-      function updateQuestions(questions, questionCount){
+      function createQuizCard(questionData) {
+        return `<div class="card">
+<h2>${questionData["question"]}</h2>
+<button onclick="checkSolution()">${questionData["answer0"]}</button>
+<button onclick="checkSolution()">${questionData["answer1"]}</button>
+<button onclick="checkSolution()">${questionData["answer2"]}</button>
+</div>
+`;
+      }
+
+      function updateQuestions(questions, questionCount) {
         var container = document.getElementById("init");
 
         container.innerHTML = "";
 
-        container.innerHTML = questions[0]["question"];
+        container.innerHTML = createQuizCard(questions[questionCount]);
+
+        questionCount++;
       }
     </script>
   </body>
