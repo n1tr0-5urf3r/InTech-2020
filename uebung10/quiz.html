@@ -75,7 +75,7 @@
       }
 
       function checkWon() {
-        if (questionCount == length(questions)) {
+        if (questionCount == questions.length) {
           container.innerHTML = "";
           cotainer.innerHTML = "<h4>Du hast " + rightAnswers + " von " + n + " Fragen richtig beantwortet.</h4>"
         }
