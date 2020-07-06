@@ -75,6 +75,10 @@
       }
 
       function checkWon() {
+          console.log(typeof(questionCount));
+          console.log(typeof(questions.length));
+          console.log(questionCount);
+          console.log(questions.length);
         if (questionCount == questions.length) {
             console.log("finished")
           return true;
@@ -88,7 +92,6 @@
       }
 
       async function checkSolution(answer) {
-        console.log(questionCount);
         solution = questions[questionCount]["solution"];
         var rightAnswer = "answer" + solution;
         document.getElementById(rightAnswer).style.backgroundColor = "green";
