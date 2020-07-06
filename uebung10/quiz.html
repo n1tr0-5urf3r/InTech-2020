@@ -53,7 +53,6 @@
       }
 
       function createQuizCard(questionData) {
-        console.log(questionData[0]["answer0"]);
         return `<div class="card">
 <h2>${questionData["question"]}</h2>
 <button id="answer0" onclick="checkSolution(0)">${questionData[0]["answer0"]}</button><br>
@@ -86,7 +85,7 @@
         } 
         console.log(answer);
 
-        sleep(2000);
+        await sleep(2000);
         updateQuestions();
       }
     </script>
