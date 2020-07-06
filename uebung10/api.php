@@ -18,7 +18,7 @@
     $statement->execute();
     $statement->bind_result($id, $question, $answer0, $answer1, $answer2, $solution);
     while ($statement->fetch()){
-        $result = array("question" => $question,
+        $result[] = array("question" => $question,
                         "answer0" => $answer0,
                         "answer1" => $answer1,
                         "answer2" => $answer2,
@@ -28,7 +28,7 @@
     return $result;
 }
 
-if($_GET["n"] === "") $n = 10;
+if(!$_GET["n"]) $n = 10; else $n=$_GET["n"];
 $questions = getNRandomQuestions($n);
 //header('Content-Type: application/json');
 print_r($questions)
