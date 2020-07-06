@@ -30,7 +30,7 @@
 }
 
 // Check for parameter and set it according
-if(!$_GET["n"] || !$_GET) $n = 10; else $n=$_GET["n"];
+if(!$_GET) $n = 10; else $n=$_GET["n"];
 $questions = getNRandomQuestions($n);
 header('Content-Type: application/json');
 echo json_encode($questions);
