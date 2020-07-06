@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+
+        body {
+            font-family: sans-serif;
+            text-align: center;
+        }
+
+        #weather {
+            margin: 1em auto;
+            width: 75%;
+            display: flex;
+            flex-direction: row;
+        }
+
+        .card {
+            flex-grow: 1;
+            flex-basis: 18%;
+            background-color: #eeeeee;
+            margin: 1%;
+            padding: 1%;
+            border-radius: 1em;
+            text-align: center;
+
+        }
+
+        .card img {
+
+            width: 75%;
+        }
+
+        #progress {
+            background-color: #DC143C;
+            height: 20px;
+        }
+
+    </style>
+
+</head>
+<body>
+
+
+<h1>Das Wetter für Nirgendwo auf der Welt</h1>
+
+<div id="weather">Bitte warten</div>
+
+<p>
+    Das Wetter aktualisiert sich alle 15 Sekunden. Bereits <span id="counter">0</span> mal aktualisiert!
+</p>
+
+<div id="progress"></div>
+
+<p>
+    <small>&copy; InTech-Wetter 2019, der zufälligste Wetterdienst der Welt</small>
+
+</p>
+
+<div style="font-size: x-small">Icons made by <a
+        href="https://www.freepik.com/?__hstc=57440181.cd3916a59a95c176a348a17ddf11c54b.1561971633852.1561971633852.1561985979427.2&__hssc=57440181.4.1561985979427&__hsfp=1586605741"
+        title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a> is
+    licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC
+        3.0 BY</a></div>
+
+
+<script>
+
+    // Zählt wie oft das Wetter bereits aktualisiert wurde
+    var updateCount = 0;
+
+
+    /**
+     * Erstellt den HTML-Code für ein DIV-Element mit der Wettervorhersage
+     * (Wir verwenden hier JavaScript Template-Strings)
+     * */
+    function createWeatherCard(weatherData) {
+
+        return `<div class="card">
+<h2>${weatherData["date"]}</h2>
+<img src="img/${weatherData['img']}">
+<p>${weatherData["temperature"]}°C</p>
+<p>${weatherData["certainty"]}% Sicherheit</p>
+</div>
+        `;
+    }
+
+
+    /**
+     * Aktualisiert die Wettervorhersage auf der Seite
+     *
+     * @var weather Array mit Wettervorhersagen
+     * */
+    function updateWeather(weather) {
+        var container = document.getElementById("weather");
+
+        container.innerHTML = "";
+
+        weather.forEach(function (data) {
+
+            container.innerHTML += createWeatherCard(data);
+
+        });
+    }
+
+
+    /**
+     * Ruft die aktuelle "Wettervorhersage" per XMLHttpRequest von der API ab
+     */
+    function fetchWeather() {
+
+        // Erzeuge ein neues XMLHttpRequest-Objekt
+        var xmlhttp = new XMLHttpRequest();
+
+        // Lege fest, was passieren soll, wenn sich der readystate des XMLHttpRequest-Objekts ändert
+        xmlhttp.onreadystatechange = function () {
+
+            // Wenn der Request beendet ist (readyState = 4) und alles OK war (status 200)
+            if (this.readyState === 4 && this.status === 200) {
+                // Wandle das Ergebnis des Requests von JSON in ein JavaScript-Objekt um
+                var weather = JSON.parse(this.responseText);
+                updateWeather(weather);
+
+            }
+            // Andernfalls: Wenn der Request beendet ist und nicht alles OK war
+            else if (this.readyState === 4 && this.status !== 200) {
+                // geben wir eine Fehlermeldung als alert aus
+                alert("Wetter konnten nicht abgerufen werden. Statuscode" + this.status);
+            }
+        };
+
+
+        xmlhttp.open("GET", "api.php", true);
+        xmlhttp.send();
+    }
+
+
+    // Ruft initial einmal das Wetter ab
+    fetchWeather();
+
+    // Ruft alle 15 Sekunden das Wetter ab
+    setInterval(function () {
+
+        // Fortschrittsbalken auf 0 setzen
+        progress = 0;
+        drawProgress();
+
+        // Update-Counter und Anzeige aktualisieren
+        updateCount++;
+        document.getElementById('counter').innerText = updateCount;
+
+        // Neues Wetter abrufen
+        fetchWeather();
+    }, 15000);
+
+    // Status der Fortschrittbalkens
+    var progress = 0;
+
+    // "Zeichnet" den Fortschrittsbalken
+    function drawProgress() {
+        document.getElementById("progress").style.width = progress * 100 / (50 * 15) + "%";
+    }
+
+    // Fortschrittsbalken alle 20 Millisekunden aktualisieren
+    setInterval(function () {
+        progress = (progress + 1) % (50 * 15);
+
+        drawProgress();
+
+    }, 20)
+</script>
+
+</body>
+</html>
