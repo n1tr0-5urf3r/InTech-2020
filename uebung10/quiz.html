@@ -22,7 +22,7 @@
 
       function startQuiz() {
         // Get initial questions once
-        const n = document.getElementById("amount").value;
+        n = document.getElementById("amount").value;
         const url = "api.php?n=" + n;
         fetchQuestions(url);
       }
@@ -64,7 +64,6 @@
       }
 
       function updateQuestions() {
-
         var container = document.getElementById("init");
         container.innerHTML = "";
         container.innerHTML = createQuizCard(questions[questionCount]);
@@ -75,8 +74,13 @@
         document.getElementById("answer2").disabled = false;
 
         questionCount++;
+      }
 
-        //checkWon();
+      function checkWon() {
+        if (questionCount == length(questions)) {
+          container.innerHTML = "";
+          cotainer.innerHTML = "<h4>Du hast " + rightAnswers + " von " + n + " Fragen richtig beantwortet.</h4>"
+        }
       }
 
       function sleep(ms) {
@@ -98,11 +102,12 @@
           document.getElementById(yourAnswer).style.backgroundColor = "red";
           document.getElementById(yourAnswer).style.color = "white";
         } else {
-            rightAnswers++;
+          rightAnswers++;
         }
 
         // Asynchronous sleep call
         await sleep(2000);
+        checkWon();
         updateQuestions();
       }
     </script>
