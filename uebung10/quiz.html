@@ -19,6 +19,7 @@
       // Used as indice for questions
       var questionCount = 0;
       var rightAnswers = 0;
+      const container = document.getElementById("init");
 
       function startQuiz() {
         // Get initial questions once
@@ -64,7 +65,6 @@
       }
 
       function updateQuestions() {
-        var container = document.getElementById("init");
         container.innerHTML = "";
         container.innerHTML = createQuizCard(questions[questionCount]);
 
