@@ -39,7 +39,7 @@
           // Wenn der Request beendet ist (readyState = 4) und alles OK war (status 200)
           if (this.readyState === 4 && this.status === 200) {
             // Wandle das Ergebnis des Requests von JSON in ein JavaScript-Objekt um
-            const questions = JSON.parse(this.responseText);
+            return questions = JSON.parse(this.responseText);
             //console.log(questions);
             //updateQuestions(questions, questionCount);
           }
