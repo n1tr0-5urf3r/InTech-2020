@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=+, initial-scale=1.0" />
-    <title>Quit</title>
+    <title>Quiz</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -53,11 +53,12 @@
       }
 
       function createQuizCard(questionData) {
+          console.log(questionData[0]["answer0"]);
         return `<div class="card">
 <h2>${questionData["question"]}</h2>
-<button onclick="checkSolution()">${questionData[0]["answer0"]}</button><br>
-<button onclick="checkSolution()">${questionData[0]["answer1"]}</button><br>
-<button onclick="checkSolution()">${questionData[0]["answer2"]}</button><br>
+<button id="answer0" onclick="checkSolution(0)">${questionData[0]["answer0"]}</button><br>
+<button id="answer1" onclick="checkSolution(1)">${questionData[0]["answer1"]}</button><br>
+<button id="answer2" onclick="checkSolution(2)">${questionData[0]["answer2"]}</button><br>
 </div>
 `;
       }
@@ -70,6 +71,10 @@
         container.innerHTML = createQuizCard(questions[questionCount]);
 
         questionCount++;
+      }
+
+      function checkSolution(answer){
+          console.log(answer);
       }
     </script>
   </body>
