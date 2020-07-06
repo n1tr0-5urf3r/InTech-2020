@@ -55,9 +55,9 @@
       function createQuizCard(questionData) {
         return `<div class="card">
 <h2>${questionData["question"]}</h2>
-<button onclick="checkSolution()">${questionData["answer0"]}</button>
-<button onclick="checkSolution()">${questionData["answer1"]}</button>
-<button onclick="checkSolution()">${questionData["answer2"]}</button>
+<button onclick="checkSolution()">${questionData[0]["answer0"]}</button><br>
+<button onclick="checkSolution()">${questionData[0]["answer1"]}</button><br>
+<button onclick="checkSolution()">${questionData[0]["answer2"]}</button><br>
 </div>
 `;
       }
