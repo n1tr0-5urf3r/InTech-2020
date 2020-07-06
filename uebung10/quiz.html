@@ -73,7 +73,7 @@
       return new Promise(resolve => setTimeout(resolve, ms));
    }
 
-      function checkSolution(answer) {
+      async function checkSolution(answer) {
         solution = questions[questionCount]["solution"];
         var rightAnswer = "answer" + solution
         document.getElementById(rightAnswer).style.backgroundColor = "green";
